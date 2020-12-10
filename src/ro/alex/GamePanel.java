@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
@@ -122,23 +121,20 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         //check if head touches left border
         if (xAxis[0] < 0) {
-//            running = false;
-            for (int i = 0; i < xAxis.length; i++) {
-                xAxis[i] = xAxis[SCREEN_WIDTH - i];
-            }
+            xAxis[0] = SCREEN_WIDTH;
         }
 
         //check if head touches right border
         if (xAxis[0] > SCREEN_WIDTH) {
-            running = false;
+            xAxis[0] = 0;
         }
         //check if head touches top border
         if (yAxis[0] < 0) {
-            running = false;
+            yAxis[0] = SCREEN_HEIGHT;
         }
         //check if head touches bottom border
         if (yAxis[0] > SCREEN_HEIGHT) {
-            running = false;
+            yAxis[0] = 0;
         }
         if (!running) {
             timer.stop();
